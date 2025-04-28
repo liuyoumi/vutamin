@@ -1,7 +1,13 @@
 // 样式
 import "@/styles/index.js";
 
+// 路由
+import router from "./router";
+
 import {createApp} from "vue";
 import App from "./App.vue";
 
-createApp(App).mount("#app");
+const app = createApp(App);
+
+app.use(router);
+app.mount("#app");
