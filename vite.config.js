@@ -21,6 +21,16 @@ export default defineConfig({
     Vue(),
     UnoCSS(),
     AutoImport({
+      imports: [
+        "vue",
+        "pinia",
+        "vue-router",
+        {
+          "validator/es": [
+            ["default", "validator"],
+          ],
+        },
+      ],
       resolvers: [TDesignResolver({
         library: "vue-next",
       })],
