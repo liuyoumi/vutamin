@@ -1,0 +1,82 @@
+export const dictTypeList = [
+  {
+    id: 1,
+    name: "是否",
+    type: "common_bool",
+    status: 1,
+    createdAt: "2025-04-11 17:11:33",
+  },
+  {
+    id: 2,
+    name: "状态",
+    type: "common_status",
+    status: 1,
+    createdAt: "2025-04-11 17:12:30",
+  },
+  {
+    id: 3,
+    name: "性别",
+    type: "system_user_gender",
+    status: 1,
+    createdAt: "2025-04-11 17:17:02",
+  },
+];
+
+export const dictDataList = [
+  {
+    id: 1,
+    label: "是",
+    value: "true",
+    color: "success",
+    dictType: "common_bool",
+    createdAt: "2025-04-11 17:14:04",
+  },
+  {
+    id: 2,
+    label: "否",
+    value: "false",
+    color: "error",
+    dictType: "common_bool",
+    createdAt: "2025-04-11 17:14:28",
+  },
+  {
+    id: 3,
+    label: "正常",
+    value: "1",
+    color: "processing",
+    dictType: "common_status",
+    createdAt: "2025-04-11 17:15:06",
+  },
+  {
+    id: 4,
+    label: "禁用",
+    value: "0",
+    color: "error",
+    dictType: "common_status",
+    createdAt: "2025-04-11 17:15:22",
+  },
+  {
+    id: 5,
+    label: "男",
+    value: "1",
+    color: "blue",
+    dictType: "system_user_gender",
+    createdAt: "2025-04-11 17:17:40",
+  },
+  {
+    id: 6,
+    label: "女",
+    value: "2",
+    color: "pink",
+    dictType: "system_user_gender",
+    createdAt: "2025-04-11 17:18:34",
+  },
+  {
+    id: 7,
+    label: "外星人",
+    value: "0",
+    color: "purple",
+    dictType: "system_user_gender",
+    createdAt: "2025-04-11 17:18:34",
+  },
+];

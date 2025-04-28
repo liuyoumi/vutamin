@@ -5,6 +5,7 @@ import Vue from "@vitejs/plugin-vue";
 import UnoCSS from "unocss/vite";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
+import {viteMockServe} from "vite-plugin-mock";
 import {TDesignResolver} from "unplugin-vue-components/resolvers";
 
 export default defineConfig({
@@ -28,6 +29,10 @@ export default defineConfig({
       resolvers: [TDesignResolver({
         library: "vue-next",
       })],
+    }),
+    viteMockServe({
+      enable: true,
+      mockPath: "mock",
     }),
   ],
 });
