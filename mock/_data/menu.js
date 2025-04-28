@@ -8,8 +8,9 @@ export const menuList = [
     name: "工作台",
     sort: 1,
     type: 2,
-    visible: true,
-    keepAlive: true,
+    hidden: false,
+    noCache: true,
+    external: false,
     breadcrumb: true,
   },
   {
@@ -21,8 +22,9 @@ export const menuList = [
     name: "系统管理",
     sort: 2,
     redirect: "/system/role",
-    visible: true,
-    keepAlive: true,
+    hidden: false,
+    noCache: true,
+    external: false,
     breadcrumb: true,
   },
   {
@@ -34,8 +36,9 @@ export const menuList = [
     icon: "permissions",
     name: "角色管理",
     sort: 2, // 菜单
-    visible: true,
-    keepAlive: true,
+    hidden: false,
+    noCache: true,
+    external: false,
     breadcrumb: true,
   },
   {
@@ -47,8 +50,9 @@ export const menuList = [
     icon: "user",
     name: "用户管理",
     sort: 3, // 菜单
-    visible: true,
-    keepAlive: true,
+    hidden: false,
+    noCache: true,
+    external: false,
     breadcrumb: true,
   },
   {
@@ -60,8 +64,9 @@ export const menuList = [
     icon: "hamburger-button",
     name: "菜单管理",
     sort: 4, // 菜单
-    visible: true,
-    keepAlive: true,
+    hidden: false,
+    noCache: true,
+    external: false,
     breadcrumb: true,
   },
   {
@@ -73,8 +78,9 @@ export const menuList = [
     icon: "bookmark",
     name: "字典管理",
     sort: 5, // 菜单
-    visible: true,
-    keepAlive: true,
+    hidden: false,
+    noCache: true,
+    external: false,
     breadcrumb: true,
   },
   {
@@ -86,8 +92,9 @@ export const menuList = [
     sort: 3,
     type: 2,
     component: "test/index",
-    visible: true,
-    keepAlive: true,
+    hidden: false,
+    noCache: true,
+    external: false,
     breadcrumb: true,
   },
   {
@@ -99,8 +106,9 @@ export const menuList = [
     sort: 4,
     type: 1,
     redirect: "/order/list",
-    visible: true,
-    keepAlive: true,
+    hidden: false,
+    noCache: true,
+    external: false,
     breadcrumb: true,
   },
   {
@@ -112,8 +120,9 @@ export const menuList = [
     sort: 1,
     type: 2,
     component: "order/list/index",
-    visible: true,
-    keepAlive: true,
+    hidden: false,
+    noCache: true,
+    external: false,
     breadcrumb: true,
   },
 ];
