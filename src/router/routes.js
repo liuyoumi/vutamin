@@ -2,7 +2,7 @@ import {toPascalCase} from "@/share/index.js";
 import {SystemMenuTypeEnum} from "@/share/const.js";
 
 /** 基础路由 */
-export const baseRoutes = [
+const baseRoutes = [
   {
     path: "/login",
     name: "Login",
@@ -14,7 +14,7 @@ export const baseRoutes = [
 ];
 
 /** 异常路由 */
-export const errorRoutes = [
+const errorRoutes = [
   {
     path: "/404",
     name: "NotFound",
@@ -75,3 +75,5 @@ const generateRoutes = (menus) => {
     return route;
   });
 };
+
+export {baseRoutes, errorRoutes, generateRoutes};
