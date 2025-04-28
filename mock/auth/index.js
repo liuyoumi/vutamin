@@ -3,7 +3,7 @@ import {convertToTree, generateTime, R} from "../_utils/index.js";
 
 export default [
   {
-    path: "/auth/login",
+    url: "/api/auth/login",
     method: "post",
     timeout: generateTime(),
     response() {
@@ -11,7 +11,7 @@ export default [
     },
   },
   {
-    path: "/auth/profile",
+    url: "/api/auth/profile",
     method: "get",
     timeout: generateTime(),
     response() {

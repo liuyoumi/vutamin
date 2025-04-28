@@ -15,7 +15,7 @@ export default [
     },
   },
   {
-    url: "/api/system/dict-type/page",
+    url: "/api/system/dict-type/list",
     method: "get",
     timeout: 1000,
     response({query}) {
@@ -31,7 +31,7 @@ export default [
     },
   },
   {
-    url: "/api/system/dict-data/page",
+    url: "/api/system/dict-data/list",
     method: "get",
     timeout: 1000,
     response({query}) {
