@@ -1,6 +1,9 @@
 <script setup>
+import Layout from "@/layout/Layout.vue";
 </script>
 
 <template>
-  <h1>Vutamin starts from here!</h1>
+  <t-config-provider>
+    <Layout/>
+  </t-config-provider>
 </template>
