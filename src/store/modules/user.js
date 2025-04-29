@@ -12,8 +12,8 @@ export const useUserStore = defineStore("user", {
   }),
   getters: {
     rootRoutes() {
-      return this.routes.filter(route => !route.meta?.hidden);
-    },
+      return this.routes.filter(route => route.meta?.visible);
+    }
   },
   actions: {
     async syncProfile() {
