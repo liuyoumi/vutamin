@@ -6,8 +6,11 @@ export default [
     url: "/api/auth/login",
     method: "post",
     timeout: generateTime(),
-    response() {
-      return R.ok();
+    response({body}) {
+      if (body.account === "admin" && body.password === "admin") {
+        return R.ok(Math.random().toString(32).slice(2));
+      }
+      return R.error("账号和密码不匹配");
     },
   },
   {
