@@ -11,6 +11,9 @@ export const useTagsViewStore = defineStore("tagsView", {
       }
       this.views.push(Object.assign({}, view, {title: view.meta.title}));
     },
+    clearViews() {
+      this.views = [];
+    },
     removeView(value) {
       this.views = this.views.filter(v => v.fullPath !== value);
     },
