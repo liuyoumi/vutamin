@@ -3,6 +3,7 @@ import Sider from "./Sider/index.vue";
 import Avatar from "./Avatar/index.vue";
 import Notice from "./Notice/index.vue";
 import Header from "./Header/index.vue";
+import TagsView from "./TagsView/index.vue";
 import FullScreen from "./FullScreen/index.vue";
 
 export {
@@ -11,5 +12,6 @@ export {
   Avatar,
   Notice,
   Header,
+  TagsView,
   FullScreen,
 };

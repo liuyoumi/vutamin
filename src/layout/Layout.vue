@@ -1,5 +1,5 @@
 <script setup>
-import {Sider, Header} from "./components";
+import {Sider, Header, TagsView } from "./components";
 </script>
 
 <template>
@@ -8,6 +8,7 @@ import {Sider, Header} from "./components";
     <t-layout>
       <Sider/>
       <t-layout>
+        <TagsView/>
         <t-content>
           <router-view/>
         </t-content>
