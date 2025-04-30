@@ -56,6 +56,7 @@ const generateRoutes = (menus) => {
       meta: {
         icon: item.icon,
         title: item.name,
+        layout: item.layout,
         noCache: item.noCache,
         visible: item.visible,
         external: item.external,
