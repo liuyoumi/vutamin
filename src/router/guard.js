@@ -1,13 +1,17 @@
 import {getToken} from "@/share/auth.js";
 import {useUserStore} from "@/store/modules/user.js";
+import {useNProgress} from "@/hooks/useNProgress.js";
 
 const whiteList = ["/login"];
+
+const progress = useNProgress();
 
 /**
  * @param {import("vue-router")} router
  */
 export const setupGuard = (router) => {
   router.beforeEach(async (to, from, next) => {
+    progress.start();
     if (getToken()) {
       if (to.path === "/login") {
         next("/");
@@ -33,5 +37,9 @@ export const setupGuard = (router) => {
     } else {
       next();
     }
+  });
+  
+  router.afterEach(() => {
+    progress.done();
   });
 };
