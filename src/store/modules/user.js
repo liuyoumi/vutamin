@@ -1,6 +1,7 @@
 import {defineStore} from "pinia";
 import {AuthApi} from "@/api/auth/index.js";
 import {baseRoutes, errorRoutes, generateRoutes} from "@/router/routes.js";
+import {removeToken} from "@/share/auth.js";
 
 export const useUserStore = defineStore("user", {
   state: () => ({
@@ -13,9 +14,13 @@ export const useUserStore = defineStore("user", {
   getters: {
     rootRoutes() {
       return this.routes.filter(route => route.meta?.visible);
-    }
+    },
   },
   actions: {
+    async logout() {
+      removeToken();
+      this.isSynced = false;
+    },
     async syncProfile() {
       const data = await AuthApi.getProfile();
       this.name = data.name;
