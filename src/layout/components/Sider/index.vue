@@ -4,16 +4,24 @@ import Item from "./Item.vue";
 import {flatMap, isArray} from "lodash-es";
 
 const route = useRoute();
-
+// 根路由
+const rootRoute = computed(() => route.matched.at(0));
+console.log(route, rootRoute);
 // 当前访问路径
 const activePath = computed(() => route.matched.at(-1).path);
-
-// 当前访问路径的根路由
-const rootRoute = computed(() => route.matched.at(0));
+// 是否有子路由
 const hasChildren = computed(() => rootRoute.value?.children?.length > 0);
 
-// 所有待展开的子菜单路径
-const expandPaths = computed(() => collectExpandPaths(rootRoute.value?.children || []));
+// 初始化时默认展开所有子菜单路径
+watch(rootRoute, ({path, children}) => {
+  if (watchSet.has(path)) {
+    return;
+  }
+  watchSet.add(path);
+  expandPaths.value = collectExpandPaths(children);
+});
+const watchSet = new Set();
+const expandPaths = ref([]);
 const collectExpandPaths = (routes) => {
   return flatMap(routes, item => {
     if (isArray(item.children) && item.children.length) {
@@ -26,7 +34,7 @@ const collectExpandPaths = (routes) => {
 
 <template>
   <t-aside v-if="hasChildren" width="200px">
-    <t-menu width="200px" :value="activePath" :default-expanded="expandPaths">
+    <t-menu width="200px" :value="activePath" v-model:expanded="expandPaths">
       <Item :routes="rootRoute.children" :parent-path="rootRoute.path"/>
     </t-menu>
   </t-aside>
