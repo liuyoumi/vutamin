@@ -16,11 +16,13 @@
     "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
     "pinia": "^3.0.2",
+    "pinia-plugin-persistedstate": "^4.3.0",
     "tdesign-vue-next": "^1.11.5",
     "validator": "^13.15.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.1",
-    "vue3-lottie": "^3.3.1"
+    "vue3-lottie": "^3.3.1",
+    "web-storage-cache": "^1.1.1"
   },
   "devDependencies": {
     "@unocss/transformer-variant-group": "^66.1.0-beta.12",
