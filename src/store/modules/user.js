@@ -21,7 +21,7 @@ export const useUserStore = defineStore("user", {
       removeToken();
       this.isSynced = false;
     },
-    async syncProfile() {
+    async loadState() {
       const data = await AuthApi.getProfile();
       this.name = data.name;
       this.roles = data.roles;
