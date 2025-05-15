@@ -1,6 +1,7 @@
 import {getToken} from "@/share/auth.js";
 import {useUserStore} from "@/store/modules/user.js";
 import {useNProgress} from "@/hooks/useNProgress.js";
+import {useDictStore} from "@/store/modules/dict.js";
 
 const whiteList = ["/login"];
 
@@ -18,12 +19,19 @@ export const setupGuard = (router) => {
         return;
       }
       
+      const dictStore = useDictStore();
       const userStore = useUserStore();
+      
+      if (!dictStore.isSynced) {
+        await dictStore.loadState();
+      }
+      
       if (!userStore.isSynced) {
-        await userStore.syncProfile();
+        await userStore.loadState();
         userStore.routes.forEach(route => {
           router.addRoute(route);
         });
+        // 告诉VueRouter：喂，我刚刚加了新路由，你再重新跳一下吧，这次一定能匹配上。
         next({...to, replace: true});
         return;
       }
