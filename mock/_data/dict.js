@@ -52,7 +52,7 @@ export const dictDataList = [
     id: 3,
     label: "正常",
     value: "1",
-    color: "processing",
+    color: "success",
     status: 1,
     dictType: "common_status",
     createdAt: "2025-04-11 17:15:06",
