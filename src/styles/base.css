@@ -1,13 +1,53 @@
 @import "var.css";
 @import "nprogress.css";
 
+@font-face {
+    font-family: Alibaba-PuHuiTi-Regular;
+    src: url("../assets/font/Alibaba-PuHuiTi-Regular.woff2") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: .5rem;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--td-scrollbar-color);
+    border: 2px solid transparent;
+    border-radius: .375rem;
+}
 
 body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, PingFang SC, Microsoft YaHei, Arial Regular;
+    font-family: -apple-system, BlinkMacSystemFont, PingFang SC, Microsoft YaHei, Arial Regular, serif;
     font-size: 14px;
     line-height: 1.5;
     color: var(--td-text-color-secondary);
     -webkit-font-smoothing: antialiased;
 }
+
+.t-dialog {
+    padding: var(--td-comp-paddingTB-l) !important;
+}
+
+.t-dialog__header-content {
+    font-family: Alibaba-PuHuiTi-Regular, sans-serif !important;
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: #333;
+}
+
+/*.t-dialog__body {*/
+/*    padding-top: 2rem !important;*/
+/*    padding-bottom: 0 !important;*/
+/*}*/
