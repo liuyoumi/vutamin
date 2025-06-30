@@ -19,7 +19,7 @@ const {
   <CrudContextProvider>
     <Search @search="cruder.search"/>
     <Toolbar>
-      <IconButton icon="plus">
+      <IconButton icon="add">
         新增字典
       </IconButton>
     </Toolbar>

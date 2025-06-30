@@ -37,7 +37,7 @@ export const menuList = [
     type: 2,
     icon: "angry",
     name: "角色管理",
-    sort: 2, // 菜单
+    sort: 2,
     layout: true,
     visible: true,
     noCache: true,
@@ -52,7 +52,7 @@ export const menuList = [
     type: 2,
     icon: "bad-laugh",
     name: "用户管理",
-    sort: 3, // 菜单
+    sort: 3,
     layout: true,
     visible: true,
     noCache: true,

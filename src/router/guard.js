@@ -1,6 +1,6 @@
 import {getToken} from "@/share/auth.js";
-import {useUserStore} from "@/store/modules/user.js";
 import {useNProgress} from "@/hooks/useNProgress.js";
+import {useUserStore} from "@/store/modules/user.js";
 import {useDictStore} from "@/store/modules/dict.js";
 
 const whiteList = ["/login"];
