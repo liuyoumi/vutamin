@@ -1,13 +1,17 @@
 <script setup>
-import _ from "lodash-es";
-import {componentMap} from "@/components/Form/src/meta.js";
+import {h} from "vue";
+import {fromPairs, isArray} from "lodash-es";
 
 const props = defineProps({
+  data: {
+    type: Object,
+    default: () => ({}),
+  },
   label: {
     type: Boolean,
     default: true,
   },
-  schemas: {
+  schema: {
     type: Array,
     required: true,
   },
@@ -15,9 +19,9 @@ const props = defineProps({
 
 const model = reactive({});
 watchEffect(() => {
-  if (_.isArray(props.schemas)) {
-    const pairs = _.fromPairs(props.schemas.map(s => [s.key, s.value]));
-    Object.assign(model, pairs);
+  if (isArray(props.schema)) {
+    const pairs = fromPairs(props.schema.map(s => [s.field, s.value]));
+    Object.assign(model, pairs, props.data);
   }
 });
 
@@ -32,9 +36,9 @@ defineExpose({
 
 <template>
   <t-form ref="formRef" :data="model" reset-type="initial" :label-width="labelWidth" v-bind="$attrs">
-    <template v-for="item of schemas" :key="item.key">
-      <t-form-item :label="label ? item.title : ''" :name="item.key">
-        <Component :is="componentMap[item.component]" v-model="model[item.key]" v-bind="item.componentProps"/>
+    <template v-for="item of schema" :key="item.field">
+      <t-form-item :label="label ? item.label : ''" :name="item.field">
+        <Component :is="item.cell(h)" v-model="model[item.field]"/>
       </t-form-item>
     </template>
     <t-form-item v-if="$slots.operation">

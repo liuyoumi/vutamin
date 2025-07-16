@@ -1,6 +1,6 @@
 <script setup>
-import {useSchemas} from "@/hooks/useSchemas.js";
-import _ from "lodash-es";
+import {cloneDeep} from "lodash-es";
+import {useCrudSchemas} from "@/hooks/useCrudSchemas.js";
 
 const props = defineProps({
   id: {
@@ -28,16 +28,16 @@ const cacheKey = id.toUpperCase() + "_TABLE_FIELDS";
 const {
   fields,
   columns,
-  searchSchemas,
-} = useSchemas(schemas, cacheKey);
+  searchSchema,
+} = useCrudSchemas(schemas, cacheKey);
 
 provide("cruder", cruder);
 // 提供给Table组件使用
 provide("columns", columns);
 // 提供给Search组件使用
-provide("search:schemas", searchSchemas);
+provide("searchSchema", searchSchema);
 // 提供给ColumnSetting使用
-provide("fields", _.cloneDeep(fields.value));
+provide("fields", cloneDeep(fields.value));
 provide("schemas", schemas);
 provide("setSharedFields", value => fields.value = value);
 </script>

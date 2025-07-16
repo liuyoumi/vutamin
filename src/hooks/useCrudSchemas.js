@@ -1,16 +1,18 @@
-import {isObject} from "lodash-es";
+import {isFunction, isObject} from "lodash-es";
 import {DictTag} from "@/components/DictTag/index.js";
 import {useStorage} from "@vueuse/core";
+import {getDictOptions} from "@/share/dict.js";
+import {DateRangePicker, Input, Select} from "tdesign-vue-next";
 
-export const useSchemas = (schemas, cacheKey) => {
-  const fields = useStorage(cacheKey, schemas.map(item => item.key));
+export const useCrudSchemas = (schemas, cacheKey) => {
+  const fields = useStorage(cacheKey, schemas.map(item => item.field));
   const columns = computed(() => {
     return fields.value.map(key => {
-      const schema = schemas.find(item => item.key === key);
+      const schema = schemas.find(item => item.field === key);
       
       const column = {
         colKey: key,
-        title: schema.title,
+        title: schema.label,
         ...(isObject(schema.table) ? schema.table : {}),
       };
       
@@ -23,12 +25,12 @@ export const useSchemas = (schemas, cacheKey) => {
     });
   });
   
-  const searchSchemas = extractSearchSchemas(schemas);
+  const searchSchema = extractSearchSchema(schemas);
   
   return {
     fields,
     columns,
-    searchSchemas,
+    searchSchema,
   };
 };
 
@@ -58,29 +60,45 @@ export const useSchemas = (schemas, cacheKey) => {
  * 提取搜索表单
  * @type {Map<string[], function(*): string>}
  */
+const componentMap = {
+  Input,
+  Select,
+  DateRangePicker,
+};
+
 const placeholderGenerators = new Map([
   [["Input"], (label) => `请输入${label}`],
-  [["Select", "DictSelect"], (label) => `${label}: 请选择`],
+  [["Select"], (label) => `请选择`],
 ]);
 
-const extractSearchSchemas = (schemas) => {
-  return schemas.filter(schema => {
-    return schema.search || isObject(schema.search);
-  }).map(schema => {
+const extractSearchSchema = (schemas) => {
+  return schemas.filter(schema => schema.search)
+  .map(schema => {
     let {
+      cell,
       component = "Input",
       componentProps = {},
     } = schema.search;
     
+    if (isFunction(cell)) {
+      return {
+        ...schema.search,
+        label: schema.label,
+        field: schema.field,
+      };
+    }
+    
     if (schema.dictType) {
-      component = "DictSelect";
-      componentProps.dictType = schema.dictType;
+      component = "Select";
+      componentProps.label = schema.label + "：";
+      componentProps.options = getDictOptions(schema.dictType);
+      componentProps.clearable = true;
     }
     
     let placeholder;
     for (const [components, generate] of placeholderGenerators) {
       if (components.includes(component)) {
-        placeholder = generate(schema.title);
+        placeholder = generate(schema.label);
         break;
       }
     }
@@ -89,12 +107,13 @@ const extractSearchSchemas = (schemas) => {
       componentProps.placeholder = placeholder;
     }
     
+    cell = h => h(componentMap[component], componentProps);
+    
     return {
       ...schema.search,
-      key: schema.key,
-      title: schema.title,
-      component,
-      componentProps,
+      label: schema.label,
+      field: schema.field,
+      cell,
     };
   });
 };

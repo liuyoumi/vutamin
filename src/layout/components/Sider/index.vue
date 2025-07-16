@@ -6,7 +6,6 @@ import {flatMap, isArray} from "lodash-es";
 const route = useRoute();
 // 根路由
 const rootRoute = computed(() => route.matched.at(0));
-console.log(route, rootRoute);
 // 当前访问路径
 const activePath = computed(() => route.matched.at(-1).path);
 // 是否有子路由

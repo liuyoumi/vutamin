@@ -9,7 +9,7 @@ const props = defineProps({
   },
   value: {
     type: [String, Number, Boolean, Array, null],
-    required: true,
+    default: true,
   },
   separator: {
     type: String,

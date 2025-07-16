@@ -14,10 +14,9 @@ const fields = ref(inject("fields") || props.fields);
 const schemas = inject("schemas") || props.schemas;
 const columns = computed(() => {
   return fields.value.map(key => {
-    const schema = schemas.find(schema => schema.key === key);
+    const schema = schemas.find(schema => schema.field === key);
     return {
-      key: schema.key,
-      title: schema.title,
+      ...schema,
       fixed: schema.table?.fixed,
     };
   });
@@ -30,7 +29,7 @@ const showModal = () => {
 };
 
 const removeItem = (item) => {
-  const index = fields.value.findIndex(v => v === item.key);
+  const index = fields.value.findIndex(v => v === item.field);
   fields.value.splice(index, 1);
 };
 
@@ -101,12 +100,12 @@ const updateCheckedFields = () => {
               @change="updateCheckedFields">
             <t-checkbox
                 v-for="item of schemas"
-                :key="item.key"
-                :value="item.key"
+                :key="item.field"
+                :value="item.field"
                 :disabled="!!item.table?.fixed"
             >
               <template #label>
-                <span class="w-30 line-clamp-1">{{ item.title }}</span>
+                <span class="w-30 line-clamp-1">{{ item.label }}</span>
               </template>
             </t-checkbox>
           </t-checkbox-group>
@@ -127,15 +126,13 @@ const updateCheckedFields = () => {
           >
             <div
                 v-for="item of columns"
-                :key="item.key"
+                :key="item.field"
                 :class="['columns-item', item.fixed && 'disable']"
             >
-              <t-space size="small">
+              <div class="flex items-center w-full gap-col-2">
                 <t-icon name="move-1" v-if="!item.fixed"/>
-                <span :class="[item.fixed && 'ml-2']">{{ item.title }}</span>
-              </t-space>
-              <div class="cursor-pointer" @click="removeItem(item)" v-if="!item.fixed">
-                <t-icon name="close"/>
+                <span :class="['flex-1 truncate', item.fixed && 'ml-2']">{{ item.label }}</span>
+                <t-icon name="close" class="cursor-pointer" @click="removeItem(item)" v-if="!item.fixed"/>
               </div>
             </div>
           </VueDraggableNext>

@@ -2,38 +2,38 @@ import {DICT_TYPE} from "@/share/dict.js";
 
 export const schemas = [
   {
-    key: "id",
-    title: "编号",
+    label: "编号",
+    field: "id",
     table: {
       fixed: "left",
     },
   },
   {
-    key: "name",
-    title: "字典名称",
+    label: "字典名称",
+    field: "name",
     table: {
       fixed: "left",
     },
     search: true,
   },
   {
-    key: "type",
-    title: "字典类型",
+    label: "字典类型",
+    field: "type",
     search: true,
   },
   {
-    key: "status",
-    title: "状态",
+    label: "状态",
+    field: "status",
     search: true,
     dictType: DICT_TYPE.COMMON_STATUS,
   },
   {
-    key: "createdAt",
-    title: "创建时间",
+    label: "创建时间",
+    field: "createdAt",
   },
   {
-    key: "operation",
-    title: "操作",
+    label: "操作",
+    field: "operation",
     table: {
       fixed: "right",
     },

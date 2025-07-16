@@ -25,11 +25,9 @@ const {
     </Toolbar>
     <Table size="small">
       <template #operation>
-        <t-space>
-          <t-button size="small" variant="text" theme="primary">编辑</t-button>
-          <t-button size="small" variant="text" theme="primary">数据</t-button>
-          <t-button size="small" variant="text" theme="danger">删除</t-button>
-        </t-space>
+        <t-button size="small" variant="text" theme="primary">编辑</t-button>
+        <t-button size="small" variant="text" theme="primary">数据</t-button>
+        <t-button size="small" variant="text" theme="danger">删除</t-button>
       </template>
     </Table>
   </CrudContextProvider>
