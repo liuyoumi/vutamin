@@ -3,14 +3,15 @@ import {useTagsViewStore} from "@/store/modules/tagsView.js";
 import {useRoute, useRouter} from "vue-router";
 
 const route = useRoute();
-const activeTab = ref();
+const active = ref();
 const tagsViewStore = useTagsViewStore();
 watch(
     route,
     () => {
-      activeTab.value = route.fullPath;
+      active.value = route.fullPath;
       tagsViewStore.addView(route);
     },
+    {immediate: true},
 );
 
 const router = useRouter();
@@ -32,7 +33,7 @@ const onRemove = ({value}) => {
 <template>
   <section>
     <t-tabs
-        v-model="activeTab"
+        v-model="active"
         scroll-position="auto"
         @change="onChange"
         @remove="onRemove"
