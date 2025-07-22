@@ -7,10 +7,16 @@ export default [
     method: "get",
     timeout: generateTime(),
     response() {
-      return R.ok({
-        list: menuList,
-        total: menuList.length,
-      });
+      return R.ok(menuList);
+    },
+  },
+  {
+    url: "/api/system/menu/detail",
+    method: "get",
+    timeout: generateTime(),
+    response({query}) {
+      console.log(query);
+      return R.ok(menuList.find(item => item.id === query.id));
     },
   },
 ];

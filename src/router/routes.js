@@ -57,10 +57,9 @@ const generateRoutes = (menus) => {
         icon: item.icon,
         title: item.name,
         layout: item.layout,
-        noCache: item.noCache,
         visible: item.visible,
         external: item.external,
-        breadcrumb: item.breadcrumb,
+        keepAlive: item.keepAlive,
       },
     };
     

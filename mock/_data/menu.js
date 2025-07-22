@@ -8,11 +8,10 @@ export const menuList = [
     name: "工作台",
     sort: 1,
     type: 2,
-    layout: true,
-    visible: true,
-    noCache: true,
-    external: false,
-    breadcrumb: true,
+    layout: true, // 表示是否需要以组件Layout作为渲染基础，常见的例如Login、NotFound页不需要
+    visible: true, // 表示是否需要显示在左侧菜单列表，当不显示时，该菜单仍然支持访问
+    external: false, // 表示是否为外部链接，如果为true则不走前端路由，而是直接跳转
+    keepAlive: true, // 表示是否需要使用keepAlive组件缓存该菜单下的组件
   },
   {
     id: 1,
@@ -25,9 +24,8 @@ export const menuList = [
     redirect: "/system/role",
     layout: true,
     visible: true,
-    noCache: true,
     external: false,
-    breadcrumb: true,
+    keepAlive: true,
   },
   {
     id: 102,
@@ -40,9 +38,8 @@ export const menuList = [
     sort: 2,
     layout: true,
     visible: true,
-    noCache: true,
     external: false,
-    breadcrumb: true,
+    keepAlive: true,
   },
   {
     id: 103,
@@ -55,9 +52,8 @@ export const menuList = [
     sort: 3,
     layout: true,
     visible: true,
-    noCache: true,
     external: false,
-    breadcrumb: true,
+    keepAlive: true,
   },
   {
     id: 104,
@@ -70,9 +66,8 @@ export const menuList = [
     sort: 4, // 菜单
     layout: true,
     visible: true,
-    noCache: true,
     external: false,
-    breadcrumb: true,
+    keepAlive: true,
   },
   {
     id: 105,
@@ -85,9 +80,8 @@ export const menuList = [
     sort: 5, // 菜单
     layout: true,
     visible: true,
-    noCache: true,
     external: false,
-    breadcrumb: true,
+    keepAlive: true,
   },
   {
     id: 3,
@@ -100,9 +94,8 @@ export const menuList = [
     redirect: "/test/module/notes",
     layout: true,
     visible: true,
-    noCache: true,
     external: false,
-    breadcrumb: true,
+    keepAlive: true,
   },
   {
     id: 4,
@@ -115,9 +108,8 @@ export const menuList = [
     redirect: "/order/list",
     layout: true,
     visible: true,
-    noCache: true,
     external: false,
-    breadcrumb: true,
+    keepAlive: true,
   },
   {
     id: 401,
@@ -130,9 +122,8 @@ export const menuList = [
     component: "order/list/index",
     layout: true,
     visible: true,
-    noCache: true,
     external: false,
-    breadcrumb: true,
+    keepAlive: true,
   },
   {
     id: 301,
@@ -144,9 +135,8 @@ export const menuList = [
     type: 1,
     layout: true,
     visible: true,
-    noCache: true,
     external: false,
-    breadcrumb: true,
+    keepAlive: true,
   },
   {
     id: 3011,
@@ -159,8 +149,7 @@ export const menuList = [
     component: "test/module/notes/index",
     layout: true,
     visible: true,
-    noCache: true,
     external: false,
-    breadcrumb: true,
+    keepAlive: true,
   },
 ];
