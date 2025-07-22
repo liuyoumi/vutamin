@@ -10,7 +10,7 @@ export const createCrudContext = (options = {}) => {
   const {
     id,
     schemas,
-    immediate,
+    immediate = true,
     ...config
   } = options;
   
