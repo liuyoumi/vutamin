@@ -45,7 +45,7 @@ provide("setSharedFields", value => fields.value = value);
 <template>
   <section class="m-3">
     <t-card :bordered="false">
-      <t-space size="large" direction="vertical">
+      <t-space class="w-full" size="large" direction="vertical">
         <slot></slot>
       </t-space>
     </t-card>
