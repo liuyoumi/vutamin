@@ -88,6 +88,7 @@ export const useCruder = (config) => {
     pageSize,
     loading,
     params,
+    pagination,
     search,
     getList,
     delList,
