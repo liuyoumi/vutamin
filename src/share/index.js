@@ -3,9 +3,6 @@ import validator from "validator";
 
 /**
  * 将路径字符串转换为帕斯卡命名法（PascalCase）
- *
- * @param {string} path - 需要转换的路径字符串（支持 / 或 - 分隔）
- * @returns {string} 转换后的帕斯卡命名法字符串，如果输入无效则返回空字符串
  */
 export const toPascalCase = (path) => {
   if (!path || validator.isURL(path)) {
@@ -16,10 +13,6 @@ export const toPascalCase = (path) => {
 
 /**
  * 判断一个值是否为空值。
- * 空值包括：null、undefined、NaN、空字符串、空数组、空对象。
- *
- * @param {*} value - 要判断的值
- * @returns {boolean} 如果是空值，返回 true；否则返回 false
  */
 export const isBlank = (value) => {
   if (_.isFinite(value) || _.isBoolean(value)) return false;
@@ -31,18 +24,11 @@ export const isBlank = (value) => {
 
 /**
  * 判断一个值是否不是空值。
- *
- * @param {*} value
- * @return {boolean}
  */
 export const isNotBlank = value => !isBlank(value);
 
 /**
  * 判断一个值是否为原始类型（Primitive）。
- * 包括：string、number、boolean、symbol、bigint、undefined、null。
- *
- * @param {*} value - 要判断的值
- * @returns {boolean} 如果是原始类型，返回 true；否则返回 false
  */
 export const isPrimitive = (value) => {
   return value === null || (typeof value !== "object" && typeof value !== "function");
@@ -66,4 +52,17 @@ export const cleanObject = (obj) => {
   }
   
   return cleaned;
+};
+
+/**
+ * 构造树形结构
+ */
+export const buildTree = (list, rootId = 0) => {
+  return list.filter(item => item.pid === rootId).map(item => {
+    const children = buildTree(list, item.id);
+    if (children.length) {
+      item.children = children;
+    }
+    return item;
+  });
 };
