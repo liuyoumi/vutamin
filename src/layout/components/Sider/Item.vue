@@ -2,10 +2,6 @@
 import {isArray} from "lodash-es";
 
 const props = defineProps({
-  level: {
-    type: Number,
-    default: 0,
-  },
   routes: {
     type: Array,
     required: true,
@@ -35,7 +31,7 @@ const getLink = (path) => {
       <template #icon>
         <t-icon :name="item.meta.icon"/>
       </template>
-      <Item :level="level + 1" :routes="item.children" :parent-path="getLink(item.path)"/>
+      <Item :routes="item.children" :parent-path="getLink(item.path)"/>
     </t-submenu>
     <t-menu-item
         v-else
@@ -43,7 +39,7 @@ const getLink = (path) => {
         :value="getLink(item.path)"
         router-link
     >
-      <template v-if="level === 0" #icon>
+      <template #icon>
         <t-icon :name="item.meta?.icon"/>
       </template>
       <span>{{ item.meta.title }}</span>

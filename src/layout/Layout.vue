@@ -4,10 +4,10 @@ import {Sider, Header, TagsView} from "./components";
 
 <template>
   <t-layout class="min-h-[100vh]">
-    <Header/>
     <t-layout>
       <Sider/>
       <t-layout class="min-w-0">
+        <Header/>
         <TagsView/>
         <t-content class="flex-basis-none! overflow-auto">
           <router-view/>
