@@ -17,6 +17,12 @@ const props = defineProps({
   },
 });
 
+watch(() => props.options, (value) => {
+  if (chart) {
+    chart.setOption(value);
+  }
+}, {deep: true});
+
 const styles = computed(() => {
   const {width, height} = props;
   return {
@@ -26,12 +32,12 @@ const styles = computed(() => {
 });
 
 let chart;
-const chartRef = ref();
+const wrapRef = ref();
 const onResize = () => {
   chart && chart.resize();
 };
 onMounted(() => {
-  chart = echarts.init(chartRef.value);
+  chart = echarts.init(wrapRef.value);
   chart.setOption(props.options);
   window.addEventListener("resize", onResize);
 });
@@ -42,5 +48,5 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="chartRef" :style="styles"></div>
+  <div ref="wrapRef" :style="styles"></div>
 </template>
