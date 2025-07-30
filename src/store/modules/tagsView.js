@@ -9,6 +9,9 @@ export const useTagsViewStore = defineStore("tagsView", {
       if (this.views.some(v => v.fullPath === view.fullPath)) {
         return false;
       }
+      if (view.meta.noTagsView) {
+        return false;
+      }
       this.views.push(Object.assign({}, view, {title: view.meta.title}));
     },
     clearViews() {

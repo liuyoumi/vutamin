@@ -3,9 +3,9 @@ export const menuList = [
     id: 2,
     pid: 0,
     path: "/",
-    component: "dashboard/index",
-    icon: "dashboard",
-    name: "工作台",
+    component: "home/index",
+    icon: "home",
+    name: "首页",
     sort: 1,
     type: 2,
     layout: true, // 表示是否需要以组件Layout作为渲染基础，常见的例如Login、NotFound页不需要

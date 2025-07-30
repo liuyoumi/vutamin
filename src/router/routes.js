@@ -11,6 +11,14 @@ const baseRoutes = [
       title: "登录",
     },
   },
+  {
+    path: "/redirect/:path(.*)",
+    name: "Redirect",
+    component: () => import("@/views/redirect/index.vue"),
+    meta: {
+      noTagsView: true,
+    },
+  },
 ];
 
 /** 异常路由 */
@@ -21,6 +29,7 @@ const errorRoutes = [
     component: () => import("@/views/error/404.vue"),
     meta: {
       title: "404",
+      noTagsView: true,
     },
   },
   {
