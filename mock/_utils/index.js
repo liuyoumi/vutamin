@@ -1,4 +1,5 @@
 import {random} from "lodash-es";
+import dayjs from "dayjs";
 
 export const R = {
   ok(data) {
@@ -37,7 +38,7 @@ export const getPageData = (data, {pageNo = 1, pageSize = 10}) => {
 };
 
 export const generateTime = () => {
-  return random(1000, 2000);
+  return random(100, 600);
 };
 
 export const convertToTree = (list, pid = 0) => {
@@ -48,4 +49,15 @@ export const convertToTree = (list, pid = 0) => {
     }
     return item;
   });
+};
+
+export const getLast7Days = () => {
+  const today = dayjs();
+  const dates = [];
+  
+  for (let i = 6; i >= 0; i--) {
+    dates.push(today.subtract(i, "day").format("YYYY-MM-DD"));
+  }
+  
+  return dates;
 };
