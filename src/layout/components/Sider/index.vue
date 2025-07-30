@@ -27,6 +27,7 @@ const expandPaths = ref([]);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100%;
+  max-height: calc(100vh - var(--header-height));
 
   .t-menu__item {
     height: var(--td-comp-size-xl);

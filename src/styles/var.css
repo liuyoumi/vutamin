@@ -1,3 +1,4 @@
 :root {
     --m-color-primary: #0052d9;
+    --header-height: var(--td-comp-size-xxxl);
 }
