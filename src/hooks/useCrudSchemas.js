@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import {isFunction, isObject} from "lodash-es";
 import {DictTag} from "@/components/DictTag/index.js";
 import {useStorage} from "@vueuse/core";
@@ -15,6 +16,12 @@ export const useCrudSchemas = (schemas, cacheKey) => {
         title: schema.label,
         ...(isObject(schema.table) ? schema.table : {}),
       };
+      
+      if (schema.format) {
+        column.cell = (_, {row}) => {
+          return dayjs(row[key]).format(schema.format);
+        };
+      }
       
       if (schema.dictType) {
         column.cell = (h, {row}) => {
