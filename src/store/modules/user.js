@@ -8,6 +8,7 @@ export const useUserStore = defineStore("user", {
     name: "",
     roles: [],
     perms: [],
+    menus: [],
     routes: [],
     isSynced: false,
   }),
@@ -26,6 +27,7 @@ export const useUserStore = defineStore("user", {
       this.name = data.name;
       this.roles = data.roles;
       this.perms = data.perms;
+      this.menus = data.menus;
       this.routes = baseRoutes.concat(generateRoutes(data.menus), errorRoutes);
       this.isSynced = true;
     },
