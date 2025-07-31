@@ -50,13 +50,6 @@ const pageOptions = computed(() => {
     },
   } : null;
 });
-
-const tableRef = ref();
-watch(tableRef, value => {
-  if (props.register) {
-    props.register(value);
-  }
-});
 </script>
 
 <template>
@@ -69,6 +62,7 @@ watch(tableRef, value => {
       :columns="columns"
       :pagination="pageOptions"
       table-layout="fixed"
+      cellEmptyContent="-"
       v-bind="$attrs"
   >
     <template v-for="(_, name) of $slots" #[name]="scope">
