@@ -9,6 +9,8 @@ const baseRoutes = [
     component: () => import("@/views/login/index.vue"),
     meta: {
       title: "登录",
+      single: 1,
+      noTagsView: 1,
     },
   },
   {
@@ -16,7 +18,7 @@ const baseRoutes = [
     name: "Redirect",
     component: () => import("@/views/redirect/index.vue"),
     meta: {
-      noTagsView: true,
+      noTagsView: 1,
     },
   },
 ];
@@ -29,7 +31,8 @@ const errorRoutes = [
     component: () => import("@/views/error/404.vue"),
     meta: {
       title: "404",
-      noTagsView: true,
+      single: 1,
+      noTagsView: 1,
     },
   },
   {
@@ -67,7 +70,6 @@ const generateRoutes = (menus) => {
         title: item.name,
         layout: item.layout,
         visible: item.visible,
-        external: item.external,
         keepAlive: item.keepAlive,
       },
     };

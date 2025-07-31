@@ -3,6 +3,30 @@ import {generateTime, R} from "../_utils/index.js";
 
 export default [
   {
+    url: "/api/system/menu",
+    method: "post",
+    timeout: generateTime(),
+    response() {
+      return R.ok();
+    },
+  },
+  {
+    url: "/api/system/menu",
+    method: "put",
+    timeout: generateTime(),
+    response() {
+      return R.ok();
+    },
+  },
+  {
+    url: "/api/system/menu",
+    method: "delete",
+    timeout: generateTime(),
+    response() {
+      return R.ok();
+    },
+  },
+  {
     url: "/api/system/menu/list",
     method: "get",
     timeout: generateTime(),
@@ -15,8 +39,7 @@ export default [
     method: "get",
     timeout: generateTime(),
     response({query}) {
-      console.log(query);
-      return R.ok(menuList.find(item => item.id === query.id));
+      return R.ok(menuList.find(item => item.id === parseInt(query.id)));
     },
   },
 ];

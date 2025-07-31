@@ -1,14 +1,14 @@
 <script setup>
-import Layout from "@/layout/Layout.vue";
 import {useRoute} from "vue-router";
+import Layout from "@/layout/Layout.vue";
 
 const route = useRoute();
-const isLayout = computed(() => route.meta.layout);
+const isSingle = computed(() => route.meta.single);
 </script>
 
 <template>
   <t-config-provider>
-    <Layout v-if="isLayout"/>
-    <router-view v-else/>
+    <router-view v-if="isSingle"/>
+    <Layout v-else/>
   </t-config-provider>
 </template>
