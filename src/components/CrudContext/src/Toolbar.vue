@@ -1,6 +1,5 @@
 <script setup>
 import {ColumnSetting} from "@/components/CrudContext/index.js";
-import Refresh from "@/components/CrudContext/src/Refresh.vue";
 
 defineOptions({
   name: "Toolbar",
@@ -17,7 +16,6 @@ defineOptions({
         <t-space>
           <slot name="right">
             <ColumnSetting/>
-            <Refresh/>
           </slot>
         </t-space>
       </div>
