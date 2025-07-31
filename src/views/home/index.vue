@@ -67,6 +67,7 @@ const onSortChange = value => {
   }
   getList();
 };
+
 const getImageUrl = (index) => {
   return new URL(`../../assets/imgs/home/${index + 1}.png`, import.meta.url).href;
 };
