@@ -3,6 +3,7 @@ import {useDictStore} from "@/store/modules/dict.js";
 const dictStore = useDictStore();
 
 export const DICT_TYPE = {
+  TOGGLE_TYPE: "toggle_type",
   COMMON_BOOL: "common_bool",
   COMMON_STATUS: "common_status",
   SYSTEM_MENU_TYPE: "system_menu_type",
