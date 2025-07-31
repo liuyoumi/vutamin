@@ -41,6 +41,13 @@ export const dictTypeList = [
     status: 1,
     createdAt: "2025-05-11 02:37:25",
   },
+  {
+    id: 6,
+    name: "系统角色类型",
+    type: "system_role_type",
+    status: 1,
+    createdAt: "2025-05-11 02:37:25",
+  },
 ];
 
 export const dictDataList = [
@@ -64,7 +71,7 @@ export const dictDataList = [
   },
   {
     id: 3,
-    label: "正常",
+    label: "开启",
     value: "1",
     color: "success",
     status: 1,
@@ -73,7 +80,7 @@ export const dictDataList = [
   },
   {
     id: 4,
-    label: "禁用",
+    label: "关闭",
     value: "0",
     color: "danger",
     status: 1,
@@ -213,6 +220,26 @@ export const dictDataList = [
     value: "0",
     color: "danger",
     dictType: "toggle_type",
+    status: 1,
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+  },
+  {
+    id: 19,
+    label: "内置",
+    value: "1",
+    color: "success",
+    dictType: "system_role_type",
+    status: 1,
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+  },
+  {
+    id: 20,
+    label: "自定义",
+    value: "2",
+    color: "warning",
+    dictType: "system_role_type",
     status: 1,
     createdAt: Date.now(),
     updatedAt: Date.now(),
