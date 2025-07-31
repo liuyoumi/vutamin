@@ -1,11 +1,7 @@
 <script setup>
-
+import {Error} from "@/components/Error";
 </script>
 
 <template>
-  <h1 class="text-red">404 not found</h1>
+  <Error type="404"/>
 </template>
-
-<style scoped>
-
-</style>
