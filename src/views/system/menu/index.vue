@@ -17,6 +17,7 @@ const {
     const data = await MenuApi.getList(params);
     return buildTree(data);
   },
+  delListApi: MenuApi.remove,
 });
 
 const tableRef = ref();
@@ -57,10 +58,28 @@ const openForm = (...args) => {
       </t-space>
     </Toolbar>
     <Table size="small" mode="enhanced" :tree="treeConfig" :register="e => tableRef = e">
-      <template #operation>
-        <t-button size="small" theme="primary" variant="text">修改</t-button>
-        <t-button size="small" theme="primary" variant="text">新增</t-button>
-        <t-button size="small" theme="danger" variant="text">删除</t-button>
+      <template #operation="{row}">
+        <t-button
+            size="small"
+            theme="primary"
+            variant="text"
+            @click="openForm('update', row.id, row.pid)">
+          修改
+        </t-button>
+        <t-button
+            size="small"
+            theme="primary"
+            variant="text"
+            @click="openForm('create', null, row.id)">
+          新增
+        </t-button>
+        <t-button
+            size="small"
+            theme="danger"
+            variant="text"
+            @click="cruder.delList(row.id)">
+          删除
+        </t-button>
       </template>
     </Table>
     <MenuForm ref="formRef" @success="cruder.getList"/>

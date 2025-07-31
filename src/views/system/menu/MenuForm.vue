@@ -1,6 +1,6 @@
 <script setup>
 import {MenuApi} from "@/api/system/menu/index.js";
-import {buildTree} from "@/share/index.js";
+import {buildTree, toPascalCase} from "@/share/index.js";
 import {DICT_TYPE} from "@/share/dict.js";
 import {DictSelect} from "@/components/DictSelect";
 import {IconSelect} from "@/components/IconSelect";
@@ -34,10 +34,10 @@ const model = reactive({
   componentName: "",
   permission: "",
   sort: undefined,
+  single: 0,
   status: 1,
-  layout: 1,
-  visible: true,
-  keepAlive: true,
+  visible: 1,
+  keepAlive: 1,
 });
 const rules = {
   name: [{required: true, message: "菜单名称必填"}],
@@ -111,11 +111,18 @@ const getTree = async () => {
           v-if="model.type !== 3">
         <t-input v-model="model.path" placeholder="请输入路由地址"></t-input>
       </t-form-item>
-      <t-form-item label="组件地址" name="component" v-if="model.type === 2">
-        <t-input v-model="model.component" placeholder="例如说: system/user/index"></t-input>
+      <t-form-item label="组件路径" name="component" v-if="model.type === 2">
+        <div class="w-full">
+          <t-input-adornment prepend="@/views/" append=".vue">
+            <t-input
+                v-model="model.component"
+                placeholder="请输入组件路径"
+            />
+          </t-input-adornment>
+        </div>
       </t-form-item>
       <t-form-item label="组件名称" name="componentName" v-if="model.type === 2">
-        <t-input v-model="model.componentName" placeholder="例如说：SystemUser"></t-input>
+        <t-input v-model="model.componentName" clearable placeholder="请输入组件名称"></t-input>
       </t-form-item>
       <t-form-item
           label="权限标识"
@@ -126,6 +133,16 @@ const getTree = async () => {
       </t-form-item>
       <t-form-item label="显示排序" name="sort">
         <t-input-number v-model="model.sort" :min="0"/>
+      </t-form-item>
+      <t-form-item
+          label="独立布局"
+          name="single"
+          tips="选择开启时，该菜单将直接进行渲染而不依赖根布局"
+          v-if="model.type !== 3">
+        <t-radio-group v-model="model.single" variant="primary-filled">
+          <t-radio-button label="关闭" :value="0"/>
+          <t-radio-button label="开启" :value="1"/>
+        </t-radio-group>
       </t-form-item>
       <t-form-item
           label="菜单状态"
@@ -139,25 +156,13 @@ const getTree = async () => {
         />
       </t-form-item>
       <t-form-item
-          label="基础布局"
-          name="layout"
-          tips="选择禁用时，该菜单不会经过包装而是直接渲染到页面上"
-          v-if="model.type !== 3">
-        <DictSelect
-            v-model="model.layout"
-            :dict-type="DICT_TYPE.COMMON_STATUS"
-            value-type="number"
-            select-type="radio"
-        />
-      </t-form-item>
-      <t-form-item
           label="显示状态"
           name="visible"
           tips="选择隐藏时，该菜单将不会显示在侧边栏但仍然可以访问"
           v-if="model.type !== 3">
         <t-radio-group v-model="model.visible" variant="primary-filled">
-          <t-radio-button label="显示" :value="true"/>
-          <t-radio-button label="隐藏" :value="false"/>
+          <t-radio-button label="显示" :value="1"/>
+          <t-radio-button label="隐藏" :value="0"/>
         </t-radio-group>
       </t-form-item>
       <t-form-item
@@ -166,8 +171,8 @@ const getTree = async () => {
           tips="选择缓存时，则会被 `keep-alive` 缓存，必须填写「组件名称」字段"
           v-if="model.type === 2">
         <t-radio-group v-model="model.keepAlive" variant="primary-filled">
-          <t-radio-button label="开启" :value="true"/>
-          <t-radio-button label="关闭" :value="false"/>
+          <t-radio-button label="开启" :value="1"/>
+          <t-radio-button label="关闭" :value="0"/>
         </t-radio-group>
       </t-form-item>
     </t-form>

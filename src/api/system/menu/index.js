@@ -4,6 +4,9 @@ export const MenuApi = {
   create(data) {
     return request.post("/system/menu", data);
   },
+  remove(id) {
+    return request.delete("/system/menu?id=" + id);
+  },
   update(data) {
     return request.put("/system/menu", data);
   },

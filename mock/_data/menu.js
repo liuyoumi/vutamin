@@ -8,10 +8,10 @@ export const menuList = [
     name: "首页",
     sort: 1,
     type: 2,
-    layout: true, // 表示是否需要以组件Layout作为渲染基础，常见的例如Login、NotFound页不需要
-    visible: true, // 表示是否需要显示在左侧菜单列表，当不显示时，该菜单仍然支持访问
-    external: false, // 表示是否为外部链接，如果为true则不走前端路由，而是直接跳转
-    keepAlive: true, // 表示是否需要使用keepAlive组件缓存该菜单下的组件
+    status: 1,
+    single: 0, // 表示是否单独渲染而不是依赖于根布局
+    visible: 1, // 表示是否需要显示在左侧菜单列表，当不显示时，该菜单仍然支持访问
+    keepAlive: 1, // 表示是否需要使用keepAlive组件进行缓存
   },
   {
     id: 1,
@@ -22,10 +22,10 @@ export const menuList = [
     name: "系统管理",
     sort: 2,
     redirect: "/system/role",
-    layout: true,
-    visible: true,
-    external: false,
-    keepAlive: true,
+    status: 1,
+    single: 0,
+    visible: 1,
+    keepAlive: 1,
   },
   {
     id: 102,
@@ -36,10 +36,10 @@ export const menuList = [
     icon: "user-1",
     name: "角色管理",
     sort: 2,
-    layout: true,
-    visible: true,
-    external: false,
-    keepAlive: true,
+    status: 1,
+    single: 0,
+    visible: 1,
+    keepAlive: 1,
   },
   {
     id: 103,
@@ -50,10 +50,10 @@ export const menuList = [
     icon: "user-1-filled",
     name: "用户管理",
     sort: 3,
-    layout: true,
-    visible: true,
-    external: false,
-    keepAlive: true,
+    status: 1,
+    single: 0,
+    visible: 1,
+    keepAlive: 1,
   },
   {
     id: 104,
@@ -64,10 +64,10 @@ export const menuList = [
     icon: "app-filled",
     name: "菜单管理",
     sort: 4, // 菜单
-    layout: true,
-    visible: true,
-    external: false,
-    keepAlive: true,
+    status: 1,
+    single: 0,
+    visible: 1,
+    keepAlive: 1,
   },
   {
     id: 105,
@@ -78,9 +78,9 @@ export const menuList = [
     icon: "book-filled",
     name: "字典管理",
     sort: 5, // 菜单
-    layout: true,
-    visible: true,
-    external: false,
-    keepAlive: true,
+    status: 1,
+    single: 0,
+    visible: 1,
+    keepAlive: 1,
   },
 ];

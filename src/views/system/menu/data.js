@@ -1,3 +1,6 @@
+import {DICT_TYPE} from "@/share/dict.js";
+import {Icon} from "tdesign-vue-next";
+
 export const schemas = [
   {
     label: "菜单名称",
@@ -10,10 +13,16 @@ export const schemas = [
   {
     label: "菜单类型",
     field: "type",
+    dictType: DICT_TYPE.SYSTEM_MENU_TYPE,
   },
   {
     label: "菜单图标",
     field: "icon",
+    table: {
+      cell: (h, {row}) => {
+        return h(Icon, {name: row.icon});
+      },
+    },
   },
   {
     label: "路由地址",
@@ -32,25 +41,25 @@ export const schemas = [
     field: "component",
   },
   {
-    label: "基础布局",
-    field: "layout",
-  },
-  {
     label: "是否可见",
     field: "visible",
+    dictType: DICT_TYPE.COMMON_BOOL,
   },
   {
-    label: "外部链接",
-    field: "external",
+    label: "独立布局",
+    field: "single",
+    dictType: DICT_TYPE.COMMON_BOOL,
   },
   {
     label: "缓存状态",
     field: "keepAlive",
+    dictType: DICT_TYPE.COMMON_STATUS,
   },
   {
     label: "菜单状态",
     field: "status",
     search: true,
+    dictType: DICT_TYPE.COMMON_STATUS,
   },
   {
     label: "操作",
